@@ -41,3 +41,23 @@ Route=/ => Feed
 Route=/login => Login
 Route=/connections => Connections
 Route=/profile => Profile
+
+
+# Deployment
+
+- Signup on AWS
+- Launch instance
+- chmod 400 <secret>.pem
+- Connect to ssh -i "DevMatch-secret.pem" ubuntu@ec2-13-60-2-249.eu-north-1.compute.amazonaws.com
+- install Node version 20.17.
+- Git Clone
+- Frontend
+    - npm install -> dependencies install
+    - npm run build
+    - sudo apt update
+    - sudo apt install nginx
+    - sudo systemctl start nginx
+    - sudo systemctl enable nginx
+    - Copy code from dist(build files) to /var/www/html/
+    - sudo scp -r dist/* /var/www/html/
+    - Enable port :80 of your instance
