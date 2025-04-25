@@ -59,7 +59,7 @@ Route=/profile => Profile
   - sudo systemctl start nginx
   - sudo systemctl enable nginx
   - Copy code from dist(build files) to /var/www/html/
-  - sudo scp -r dist/\* /var/www/html/
+  - sudo scp -r dist/* /var/www/html/
   - Enable port :80 of your instance
 
 - Backend
