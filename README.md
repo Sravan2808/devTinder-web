@@ -42,7 +42,6 @@ Route=/login => Login
 Route=/connections => Connections
 Route=/profile => Profile
 
-
 # Deployment
 
 - Signup on AWS
@@ -52,12 +51,22 @@ Route=/profile => Profile
 - install Node version 20.17.
 - Git Clone
 - Frontend
-    - npm install -> dependencies install
-    - npm run build
-    - sudo apt update
-    - sudo apt install nginx
-    - sudo systemctl start nginx
-    - sudo systemctl enable nginx
-    - Copy code from dist(build files) to /var/www/html/
-    - sudo scp -r dist/* /var/www/html/
-    - Enable port :80 of your instance
+
+  - npm install -> dependencies install
+  - npm run build
+  - sudo apt update
+  - sudo apt install nginx
+  - sudo systemctl start nginx
+  - sudo systemctl enable nginx
+  - Copy code from dist(build files) to /var/www/html/
+  - sudo scp -r dist/\* /var/www/html/
+  - Enable port :80 of your instance
+
+- Backend
+  - allowed ec2 instance public IP on mongodb server
+  - Enable port :7777 of your instance
+  - npm install pm2 -g
+  - pm2 start npm -- start (or) to change the custom name
+   pm2 start npm -- name "devTinder-Backend" -- start
+  - pm2 logs
+  - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name>
