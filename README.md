@@ -71,13 +71,13 @@ Route=/profile => Profile
   - pm2 logs
   - pm2 list, pm2 flush <name>, pm2 stop <name>, pm2 delete <name>
   - pm2 start npm --name "devTinder-backend" -- start
-  - config nginx - /etc/nginx/sites-available/default
-  - restart nginx : sudo systemctl restart 
+  - config nginx - sudo nano /etc/nginx/sites-available/default
+  - restart nginx : sudo systemctl restart nginx
   - Modify the BASEURL in frontend project to /api
 
   # nginx config :
           
-    server_name 13.60.2.249;
+    server_name 13.50.236.219;
 
      location /api/ {
         proxy_pass http://localhost:7777/;
