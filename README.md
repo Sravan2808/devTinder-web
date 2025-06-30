@@ -87,3 +87,28 @@ Route=/profile => Profile
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
+
+  # Adding a custom Domain name 
+
+    - purchased domain name from godaddy/namescheap
+    - signup on cloudflare & add a new domain name
+    - change nameservers on godaddy/namescheap  and point it to cloudflare 
+    - wait for sometime till your nameservers are updated 
+    - DNS record: A devmatchh.me 13.50.236.219
+    - Enable SSL for website
+
+  # Sending Emails via SES
+
+    - Create a IAM user
+    - Give Access to AmazonSESFullAccess
+    - Amazon SES : Create an Identity
+    - Verify your domain name
+    - Verify an email address identity
+    - Install AWS SDK -v3 
+    - Code Example https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples 
+    - Setup SESClient
+    - Access Credentials should be created in iAM under SecurityCredentials Tab
+    - Add the credentials to the env fileo
+    - Write code for SESClient
+    - Write code for Sending email address
+    - Make the email dynamic by passing more params to the run function
