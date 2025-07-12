@@ -70,6 +70,11 @@ const NavBar = () => {
                   Requests
                 </Link>
               </li>
+               <li>
+                <Link to="/premium" className="flex justify-between">
+                  Premium
+                </Link>
+              </li>
               <li>
                 <a onClick={handleLogout} className="text-red-500">
                   Logout

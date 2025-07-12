@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
+import { div } from "motion/react-client";
+import DevmatchhLogoAnimation from "./DevmatchhLogoAnimation";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("");
@@ -58,79 +60,89 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex justify-center mt-20 ">
-      <div className="card bg-base-100 image-full w-96 shadow-sm ">
-        <div className="card-body">
-          <h2 className="card-title flex justify-center mr-4">
-            {isLoginForm ? "Login" : "Sign Up"}
-          </h2>
-
-          {!isLoginForm && (
-            <>
-              <label className="floating-label">
-                <span>First Name</span>
-                <input
-                  type="text"
-                  value={firstName}
-                  placeholder="Enter your First Name"
-                  className="input input-md mt-1"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </label>
-              <br />
-
-              <label className="floating-label">
-                <span>Last Name</span>
-                <input
-                  type="text"
-                  value={lastName}
-                  placeholder="Enter your Last Name"
-                  className="input input-md mt-1"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </label>
-              <br />
-            </>
-          )}
-          <label className="floating-label">
-            <span>Your Email</span>
-            <input
-              type="email"
-              value={emailId}
-              placeholder="Enter your Email"
-              className="input input-md mt-1"
-              onChange={(e) => setEmailId(e.target.value)}
-            />
-          </label>
-          <br />
-
-          <label className="floating-label">
-            <span>Password</span>
-            <input
-              type="password"
-              value={password}
-              placeholder="Password"
-              className="input input-md mt-1"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <p className="text-red-500">{error}</p>
-          <div className="card-actions justify-center mt-5">
-            <button
-              className="btn btn-primary"
-              onClick={isLoginForm ? handleLogin : handleSignup}
-            >
+    <div
+      className="flex min-h-screen items-center justify-center"
+      style={{ backgroundColor: "#0F1727" }}
+    >
+     
+      <div className="flex-1 flex justify-center items-center p-8">
+        <DevmatchhLogoAnimation />
+      </div>
+    
+      <div className="flex-1 flex justify-center items-center mb-60 p-8">
+        <div className="card bg-base-100 image-full w-96 shadow-sm ">
+          <div className="card-body">
+            <h2 className="card-title flex justify-center mr-4">
               {isLoginForm ? "Login" : "Sign Up"}
-            </button>
+            </h2>
+
+            {!isLoginForm && (
+              <>
+                <label className="floating-label">
+                  <span>First Name</span>
+                  <input
+                    type="text"
+                    value={firstName}
+                    placeholder="Enter your First Name"
+                    className="input input-md mt-1"
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </label>
+                <br />
+
+                <label className="floating-label">
+                  <span>Last Name</span>
+                  <input
+                    type="text"
+                    value={lastName}
+                    placeholder="Enter your Last Name"
+                    className="input input-md mt-1"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </label>
+                <br />
+              </>
+            )}
+            <label className="floating-label">
+              <span>Your Email</span>
+              <input
+                type="email"
+                value={emailId}
+                placeholder="Enter your Email"
+                className="input input-md mt-1"
+                onChange={(e) => setEmailId(e.target.value)}
+              />
+            </label>
+            <br />
+
+            <label className="floating-label">
+              <span>Password</span>
+              <input
+                type="password"
+                value={password}
+                placeholder="Password"
+                className="input input-md mt-1"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <p className="text-red-500">{error}</p>
+            <div className="card-actions justify-center mt-5">
+              <button
+                className="btn btn-primary"
+                onClick={isLoginForm ? handleLogin : handleSignup}
+              >
+                {isLoginForm ? "Login" : "Sign Up"}
+              </button>
+            </div>
+            <p
+              className="cursor-pointer flex justify-center font-bold mt-5  text-gray-400 "
+              onClick={() => setIsLoginForm((value) => !value)}
+            >
+              {isLoginForm
+                ? "New User? Signup Here"
+                : "Existing User? Login Here"}
+            </p>
           </div>
-          <p
-            className="cursor-pointer flex justify-center font-bold mt-5  text-gray-400 "
-            onClick={() => setIsLoginForm((value) => !value)}
-          >
-            {isLoginForm
-              ? "New User? Signup Here"
-              : "Existing User? Login Here"}
-          </p>
         </div>
       </div>
     </div>
