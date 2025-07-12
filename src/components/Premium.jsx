@@ -10,14 +10,16 @@ const Premium = () => {
       },
       { withCredentials: true }
     );
+
     const { amount, keyId, currency, notes, orderId } = order.data;
-    // Dialog Box
+
     const options = {
       key: keyId,
       amount,
       currency,
       name: "Devmatchh",
       description: "Connect to like minded developers",
+
       order_id: orderId,
       prefill: {
         name: notes.firstName + " " + notes.lastName,
