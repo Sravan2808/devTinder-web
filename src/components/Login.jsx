@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
-import { div } from "motion/react-client";
+import { motion } from "framer-motion";
+
 import DevmatchhLogoAnimation from "./DevmatchhLogoAnimation";
 
 const Login = () => {
