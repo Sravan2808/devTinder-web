@@ -1,9 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 
 const Premium = () => {
-  const handleBuy = async (type) => { 
+  const handleBuy = async (type) => {
     const order = await axios.post(
       BASE_URL + "/payment/create",
       {
