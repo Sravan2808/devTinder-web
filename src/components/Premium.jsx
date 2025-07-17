@@ -1,7 +1,18 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import { useState } from "react";
 
 const Premium = () => {
+  const [isUserPremium, setIsUserPremium] = useState(false);
+  const verifyPremiumUser = async () => {
+    const res = await axios.get(BASE_URL + "/premium/verify", {
+      withCredentials: true,
+    });
+
+    if (res.data.isPremium) {
+      setIsUserPremium(true);
+    }
+  };
   const handleBuy = async (type) => {
     const order = await axios.post(
       BASE_URL + "/payment/create",
@@ -19,7 +30,6 @@ const Premium = () => {
       currency,
       name: "Devmatchh",
       description: "Connect to like minded developers",
-
       order_id: orderId,
       prefill: {
         name: notes.firstName + " " + notes.lastName,
@@ -29,12 +39,15 @@ const Premium = () => {
       theme: {
         color: "#10A27E",
       },
+      handler: verifyPremiumUser,
     };
 
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
-  return (
+  return isUserPremium ? (
+    "You are already a premium user"
+  ) : (
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold mb-4">Choose Your Premium Plan</h2>
