@@ -140,3 +140,9 @@ Route=/profile => Profile
     - Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-razorpay-payment-gateway
     - Ref - https://razorpay.com/docs/webhooks/validate-test/
     - Ref - https://razorpay.com/docs/webhooks/payloads/payments/
+
+  # Real Time Chat using WebSocket(Socket.io)
+    - Build the UI for a chat window on /chat/:targetUserId 
+    - Setup socket.io in backend
+    - npm i socket.io 
+    

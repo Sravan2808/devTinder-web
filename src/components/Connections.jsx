@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -22,16 +23,23 @@ const Connections = () => {
   }, []);
 
   if (!connections || connections.length === 0) {
-    return <h1 className="text-center text-gray-400 text-xl my-10">No Connections Found</h1>;
+    return (
+      <h1 className="text-center text-gray-400 text-xl my-10">
+        No Connections Found
+      </h1>
+    );
   }
 
   return (
     <div className="text-center my-10">
-      <h1 className="text-3xl font-bold text-gray-200 mb-6">Your Connections</h1>
+      <h1 className="text-3xl font-bold text-gray-200 mb-6">
+        Your Connections
+      </h1>
 
       <div className="flex flex-wrap justify-center gap-6">
         {connections.map((connection) => {
-          const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
+          const { _id, firstName, lastName, photoUrl, age, gender, about } =
+            connection;
 
           return (
             <div
@@ -46,10 +54,21 @@ const Connections = () => {
               />
 
               {/* User Info */}
-              <div className="text-left ml-5">
-                <h2 className="font-semibold text-lg">{firstName} {lastName}</h2>
-                <p className="text-gray-400">{age && gender && `${age}, ${gender}`}</p>
-                <p className="text-gray-300 text-sm">{about}</p>
+              <div className="flex justify-center items-center relative">
+                <div className="text-left ml-5">
+                  <h2 className="font-semibold text-lg">
+                    {firstName} {lastName}
+                  </h2>
+                  <p className="text-gray-400">
+                    {age && gender && `${age}, ${gender}`}
+                  </p>
+                  <p className="text-gray-300 text-sm">{about}</p>
+                </div>
+                <Link className="flex justify-center items-center" to={"/chat/" + _id}>
+                  <button className="absolute ml-[50%]  bg-blue-500 text-black hover:bg-blue-700 p-3 border-transparent rounded-lg left-[200px]">
+                    chat
+                  </button>
+                </Link>
               </div>
             </div>
           );
