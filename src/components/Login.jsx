@@ -31,7 +31,7 @@ const Login = () => {
         },
         {
           withCredentials: true,
-        }
+        },
       );
       dispatch(addUser(res.data));
       navigate("/");
@@ -51,7 +51,7 @@ const Login = () => {
           emailId,
           password,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(addUser(res.data.data));
       return navigate("/profile");
@@ -62,16 +62,15 @@ const Login = () => {
   };
   return (
     <div
-      className="flex min-h-screen items-center justify-center"
+      className="flex min-h-screen items-center justify-center flex-col lg:flex-row gap-6 lg:gap-12 px-4 py-8"
       style={{ backgroundColor: "#0F1727" }}
     >
-     
-      <div className="flex-1 flex justify-center items-center p-8">
+      <div className="flex-1 flex justify-center items-center p-4 sm:p-8 w-full lg:w-auto">
         <DevmatchhLogoAnimation />
       </div>
-    
-      <div className="flex-1 flex justify-center items-center mb-60 p-8">
-        <div className="card bg-base-100 image-full w-96 shadow-sm ">
+
+      <div className="flex-1 flex justify-center items-center w-full lg:w-auto p-4 sm:p-8 lg:mb-0">
+        <div className="card bg-base-100 image-full w-full max-w-sm sm:max-w-md shadow-sm ">
           <div className="card-body">
             <h2 className="card-title flex justify-center mr-4">
               {isLoginForm ? "Login" : "Sign Up"}

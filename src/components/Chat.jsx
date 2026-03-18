@@ -20,7 +20,11 @@ const Chat = () => {
     console.log(chat.data.messages);
     const chatMessages = chat?.data?.messages.map((msg) => {
       const { senderId, text } = msg;
-      return { firstName: senderId?.firstName, lastName: senderId?.lastName, text };
+      return {
+        firstName: senderId?.firstName,
+        lastName: senderId?.lastName,
+        text,
+      };
     });
     setMessages(chatMessages);
   };
@@ -59,14 +63,22 @@ const Chat = () => {
     setNewMessage("");
   };
   return (
-    <div className="w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col">
+    <div className="w-full sm:w-11/12 lg:w-3/4 mx-auto border border-gray-600 my-5 px-4 sm:px-6 h-[70vh] flex flex-col">
       <h1 className="p-5 border-b border-gray-600 text-zinc-400 ">
         Chitchat with the developers
       </h1>
       <div className="flex-1 overflow-auto p-5">
         {/* display messages */}
         {messages.map((message, index) => (
-          <div key={index} className={"chat" + (user.firstName === message.firstName ? " chat-start" : " chat-end")}>
+          <div
+            key={index}
+            className={
+              "chat" +
+              (user.firstName === message.firstName
+                ? " chat-start"
+                : " chat-end")
+            }
+          >
             <div className="chat-header">
               {`${message.firstName} ${message.lastName}`}
               <time className="text-xs opacity-50">2 hours ago</time>

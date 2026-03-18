@@ -16,17 +16,18 @@ const Feed = () => {
       });
 
       dispatch(addFeed(res?.data?.data));
-    } catch (err) {}  
+    } catch (err) {}
   };
   useEffect(() => {
     getFeed();
   }, []);
   if (!feed) return;
 
-  if (feed.length <= 0) return <h1 className="flex justify-center my-10">No new Users Found!</h1>;
+  if (feed.length <= 0)
+    return <h1 className="flex justify-center my-10">No new Users Found!</h1>;
   return (
     feed && (
-      <div className="flex justify-center my-15 ">
+      <div className="flex justify-center my-10 px-4">
         <UserCard user={feed[0]} />
       </div>
     )

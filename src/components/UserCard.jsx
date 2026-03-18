@@ -12,16 +12,16 @@ const UserCard = ({ user }) => {
       const res = await axios.post(
         BASE_URL + "/request/send/" + status + "/" + userId,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(removeUserFromFeed(userId));
     } catch (err) {}
   };
 
   return (
-    <div className="card bg-base-300 w-96 shadow-sm">
+    <div className="card bg-base-300 w-full max-w-sm sm:max-w-md shadow-sm mx-4 sm:mx-0">
       <figure>
-        <img className="mt-4" src={user.photoUrl} />
+        <img className="mt-4 w-full object-cover" src={user.photoUrl} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>
@@ -47,4 +47,3 @@ const UserCard = ({ user }) => {
 };
 
 export default UserCard;
-  

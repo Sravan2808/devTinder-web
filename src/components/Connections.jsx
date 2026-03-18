@@ -44,7 +44,7 @@ const Connections = () => {
           return (
             <div
               key={_id}
-              className="flex items-center bg-gray-800 text-white rounded-lg shadow-lg p-5 w-[90%] md:w-[60%] lg:w-[45%] xl:w-[35%] hover:shadow-2xl transition-all duration-300"
+              className="flex flex-col sm:flex-row sm:items-center gap-4 bg-gray-800 text-white rounded-lg shadow-lg p-5 w-full sm:w-[90%] md:w-[70%] lg:w-[55%] xl:w-[45%] hover:shadow-2xl transition-all duration-300"
             >
               {/* Profile Image */}
               <img
@@ -54,18 +54,21 @@ const Connections = () => {
               />
 
               {/* User Info */}
-              <div className="flex justify-center items-center relative">
-                <div className="text-left ml-5">
-                  <h2 className="font-semibold text-lg">
-                    {firstName} {lastName}
-                  </h2>
-                  <p className="text-gray-400">
-                    {age && gender && `${age}, ${gender}`}
-                  </p>
-                  <p className="text-gray-300 text-sm">{about}</p>
-                </div>
-                <Link className="flex justify-center items-center" to={"/chat/" + _id}>
-                  <button className="absolute ml-[50%]  bg-blue-500 text-black hover:bg-blue-700 p-3 border-transparent rounded-lg left-[200px]">
+              <div className="flex-1 text-left">
+                <h2 className="font-semibold text-lg">
+                  {firstName} {lastName}
+                </h2>
+                <p className="text-gray-400">
+                  {age && gender && `${age}, ${gender}`}
+                </p>
+                <p className="text-gray-300 text-sm">{about}</p>
+              </div>
+              <div className="mt-2 sm:mt-0 sm:ml-auto">
+                <Link
+                  className="flex justify-center items-center"
+                  to={"/chat/" + _id}
+                >
+                  <button className="bg-blue-500 text-black hover:bg-blue-700 px-4 py-2 border-transparent rounded-lg">
                     chat
                   </button>
                 </Link>

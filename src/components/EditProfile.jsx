@@ -30,7 +30,7 @@ const EditProfile = ({ user }) => {
           gender,
           about,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(addUser(res?.data?.data));
       setShowToast(true);
@@ -44,9 +44,9 @@ const EditProfile = ({ user }) => {
 
   return (
     <>
-      <div className="flex justify-center my-10">
-        <div className="flex justify-center mx-10">
-          <div className="card bg-base-300 w-96 shadow-xl">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 my-10 px-4">
+        <div className="w-full lg:w-auto flex justify-center">
+          <div className="card bg-base-300 w-full max-w-md shadow-xl">
             <div className="card-body">
               <h2 className="card-title justify-center">Edit Profile</h2>
               <div>

@@ -13,7 +13,7 @@ const Requests = () => {
       await axios.post(
         `${BASE_URL}/request/review/${status}/${_id}`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
       dispatch(removeRequest(_id));
     } catch (err) {}
@@ -33,20 +33,27 @@ const Requests = () => {
   }, []);
 
   if (!requests || requests.length === 0) {
-    return <h1 className="flex justify-center my-10 text-gray-400 text-xl">No Requests Found</h1>;
+    return (
+      <h1 className="flex justify-center my-10 text-gray-400 text-xl">
+        No Requests Found
+      </h1>
+    );
   }
 
   return (
     <div className="text-center my-10">
-      <h1 className="font-bold text-3xl mb-6 text-gray-200">Connection Requests</h1>
+      <h1 className="font-bold text-3xl mb-6 text-gray-200">
+        Connection Requests
+      </h1>
 
       {requests.map((request) => {
-        const { _id, firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
+        const { _id, firstName, lastName, photoUrl, age, gender, about } =
+          request.fromUserId;
 
         return (
           <div
             key={_id}
-            className="flex items-center justify-between bg-gray-800 text-white rounded-lg shadow-lg w-2/3 mx-auto p-5 mb-4 hover:shadow-2xl transition-all duration-300"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-gray-800 text-white rounded-lg shadow-lg w-full sm:w-5/6 lg:w-2/3 mx-auto p-5 mb-4 hover:shadow-2xl transition-all duration-300"
           >
             {/* Profile Image */}
             <div className="flex items-center">
@@ -56,14 +63,18 @@ const Requests = () => {
                 src={photoUrl}
               />
               <div className="text-left ml-4">
-                <h2 className="font-semibold text-lg">{firstName} {lastName}</h2>
-                <p className="text-gray-400">{age && gender && `${age}, ${gender}`}</p>
+                <h2 className="font-semibold text-lg">
+                  {firstName} {lastName}
+                </h2>
+                <p className="text-gray-400">
+                  {age && gender && `${age}, ${gender}`}
+                </p>
                 <p className="text-gray-300 text-sm">{about}</p>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex space-x-3">
+            <div className="flex gap-3 flex-wrap justify-center sm:justify-end">
               <button
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition-all"
                 onClick={() => reviewRequest("rejected", request._id)}
